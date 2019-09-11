@@ -21,14 +21,14 @@ if __name__ == '__main__':
                 nY = [0,1,0,-1]
                 for i in range(4):
                     if lyingOutside(x+nX[i],y+nY[i]):
-                        P[x*5 + y][x*5 + y] += 1/4
-                        G[x*5 + y]  += (0.25 * -1)
+                        P[x*5 + y][x*5 + y] += 1/4 
+                        G[x*5 + y]  += (0.25 * -1) #The expected value of the policy 
                     else:
                         P[x*5 + y][(x+nX[i])*5 + (y+nY[i])] = 1/4
 
     # print(G) 
     v_pie = np.matmul(np.linalg.inv(I - gamma * P),G)
-    print(v_pie.reshape(5,5))
+    print(v_pie.reshape(5,5)) #final policy
 
 
 
